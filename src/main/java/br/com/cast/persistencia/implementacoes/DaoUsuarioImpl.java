@@ -13,9 +13,14 @@ import br.com.cast.persistencia.interfaces.IDaoUsuario;
 @Repository
 public class DaoUsuarioImpl extends JPAGenericoDao<Usuario> implements IDaoUsuario {
 
+	public DaoUsuarioImpl() {
+		super(Usuario.class);
+	}
+
 	/**
-	 * Este método tem a função de verificar se há algum usuario com login e senha informados e retorna-lo. 
-	 *
+	 * Este método tem a função de verificar se há algum usuario com login e
+	 * senha informados e retorna-lo.
+	 * 
 	 * @author Yuri Cavalcante
 	 * @return Lista de Usuarios Encontrados
 	 */
@@ -24,27 +29,26 @@ public class DaoUsuarioImpl extends JPAGenericoDao<Usuario> implements IDaoUsuar
 		String jpql = " From Usuario u where u.login = ? and u.senha = ?";
 		return (List<Usuario>) super.criarQuery(jpql, usuarioLogin.getLogin(), usuarioLogin.getSenha());
 	}
-	
+
 	/**
-	 * Este método tem a função de retornar uma lista de usuarios encontrados com os filtros informados. 
-	 *
+	 * Este método tem a função de retornar uma lista de usuarios encontrados
+	 * com os filtros informados.
+	 * 
 	 * @author Yuri Cavalcante
 	 * @return Lista de Usuarios Filtrados
 	 */
-	public List<Usuario> recuperarListaUsuarioFiltroBanco(String nomePesquisa,
-	Cidade cidadePesquisa, Estado estadoPesquisa, Double distMaxima) {
+	public List<Usuario> recuperarListaUsuarioFiltroBanco(String nomePesquisa, Cidade cidadePesquisa, Estado estadoPesquisa, Double distMaxima) {
 		StringBuilder sb = new StringBuilder();
 		sb.append(" From Usuario u where 1=1");
-		
-		if(nomePesquisa != null){
+
+		if (nomePesquisa != null) {
 			sb.append(" and u.nome = ");
 			sb.append(nomePesquisa);
 		}
-		if (cidadePesquisa != null){
+		if (cidadePesquisa != null) {
 			sb.append(" and u.");
 		}
 		return null;
 	}
-	
-	
+
 }

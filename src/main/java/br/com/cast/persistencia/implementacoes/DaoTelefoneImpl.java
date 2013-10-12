@@ -9,5 +9,8 @@ import br.com.cast.persistencia.interfaces.IDaoTelefone;
 @Repository
 public class DaoTelefoneImpl extends JPAGenericoDao<Telefone> implements IDaoTelefone {
 
+	public DaoTelefoneImpl() {
+		super(Telefone.class);
+	}
 
 }

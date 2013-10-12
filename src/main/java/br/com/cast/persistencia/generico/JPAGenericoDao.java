@@ -1,7 +1,6 @@
 package br.com.cast.persistencia.generico;
 
 import java.io.Serializable;
-import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -14,39 +13,38 @@ public class JPAGenericoDao<T extends Serializable> implements GenericoDao<T> {
 
 	@PersistenceContext
 	private EntityManager entityManager;
-	
+
 	private Class<T> persistentClass;
 
-	@SuppressWarnings("unchecked")
-	public JPAGenericoDao() {
-		this.persistentClass = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
+	public JPAGenericoDao(Class<T> persistentClass) {
+		this.persistentClass = persistentClass;
 	}
-	
-	public JPAGenericoDao(EntityManager entityManager) {
-		this();
+
+	public JPAGenericoDao(Class<T> persistentClass, EntityManager entityManager) {
+		this(persistentClass);
 		this.entityManager = entityManager;
 	}
-	
+
 	protected Class<T> getPersistentClass() {
 		if (this.persistentClass == null)
 			throw new IllegalStateException("PersistentClass has not been set on DAO before usage");
 		return this.persistentClass;
 	}
-	
+
 	protected void setPersistentClass(Class<T> persistentClass) {
 		this.persistentClass = persistentClass;
 	}
-	
+
 	protected EntityManager getEntityManager() {
 		if (this.entityManager == null)
 			throw new IllegalStateException("EntityManager has not been set on DAO before usage");
 		return this.entityManager;
 	}
-	
-	protected void setEntityManager(EntityManager entityManager){
+
+	protected void setEntityManager(EntityManager entityManager) {
 		this.entityManager = entityManager;
 	}
-	
+
 	protected Query criarQuery(String JPQL, Object... parans) {
 		Query query = this.getEntityManager().createQuery(JPQL);
 		int i = 0;
@@ -55,11 +53,11 @@ public class JPAGenericoDao<T extends Serializable> implements GenericoDao<T> {
 		}
 		return query;
 	}
-	
+
 	public List<?> buscarPorJpql(String jpql, Object... parans) {
 		return this.criarQuery(jpql, parans).getResultList();
 	}
-	
+
 	@Override
 	@Transactional
 	public void salvar(T t) {
