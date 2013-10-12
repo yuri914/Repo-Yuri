@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+	<head>
+		<meta charset="utf-8" />
+		<title>Distancia Certa</title>
+	</head>
+	<body>
+		<form class="form-inline" wicket:id="formularioContato">
+		<div wicket:id="mensagem"></div>
+		<fieldset>
+		<legend>Informações de Contato</legend>
+			<label wicket:for="cep">CEP:</label>
+			<input wicket:id="cep" type="text"/>
+			<label wicket:for="estado">Estado:</label>
+			<select wicket:id="estado"></select>
+			<label wicket:for="cidade">Cidade:</label>
+			<select wicket:id="cidade"></select>
+			<label wicket:for="logradouro">Logradouro:</label>
+			<input wicket:id="logradouro" type="text"/>
+			<label wicket:for="bairro">Bairro:</label>
+			<input wicket:id="bairro" type="text"/>
+			<label wicket:for="complemento">Complemento:</label>
+			<input wicket:id="complemento" type="text"/>
+			<fieldset>
+				<legend>Email(s)</legend>
+				<label wicket:for="email">Endereço:</label>
+				<input wicket:id="email" type="text"/>
+				<input type="submit" wicket:id="novoEmail" value="+"/>
+			</fieldset>
+			<fieldset>
+				<legend>Telefones</legend>
+				<label wicket:for="ddd">DDD:</label>
+				<select type="text" wicket:id="ddd"/>
+				<label wicket:for="numero">Número:</label>
+				<input wicket:id="numero" type="text"/>
+				<input type="submit" wicket:id="novoNumero" value="+"/>
+			</fieldset>
+			<input type="submit" wicket:id="confirmar" value="Confirmar"/>
+		</fieldset>
+		</form>
+	</body>
+</html>

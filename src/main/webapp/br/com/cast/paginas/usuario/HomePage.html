@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+	<head>
+		<meta charset="utf-8" />
+		<title>Distancia Certa</title>
+	</head>
+	<body>
+	<form class="form-inline" wicket:id="formularioPrincipal">
+		<div wicket:id="mensagem"></div>
+		<label wicket:for="login">Login:</label>
+		<input type="text" wicket:id="login"/>
+		<label wicket:for="senha">Senha:</label>
+		<input type="password" wicket:id="senha"/>
+		<input type="submit" wicket:id="entrar" value="Entrar"/>
+		<hr/>
+	<fieldset>
+		<legend>Cadastre-se</legend>
+		<label wicket:for="nome">Nome:</label>
+		<input wicket:id="nome" type="text"/><br/>
+		<label wicket:for="genero">Genero:</label>
+		<span wicket:id="genero"/><br/>
+		<label wicket:for="dataNascimento">Nascimento:</label>
+		<input maxlength="10" wicket:id="dataNascimento" type="text"/><br/>
+		<label wicket:for="cpf">CPF:</label>
+		<input maxlength="11" wicket:id="cpf" type="text"/><br/>
+		<label wicket:for="loginCadastro">Login:</label>
+		<input wicket:id="loginCadastro" type="text"/><br/>
+		<label wicket:for="senhaCadastro">Senha:</label>
+		<input wicket:id="senhaCadastro" type="text"/><br/>
+		<input type="submit" wicket:id="cadastrar" value="Cadastrar"/>
+	</fieldset>
+	</form>
+	</body>
+</html>
