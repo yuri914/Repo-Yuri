@@ -21,9 +21,9 @@ public class Email implements Serializable {
 	@Column(name = "id")
 	private Integer id;
 
-	@ManyToOne
+/*	@ManyToOne
 	@JoinColumn(name = "id_contato")
-	private Contato contato;
+	private Contato contato;*/
 
 	@Column(name = "email")
 	private String email;

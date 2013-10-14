@@ -1,13 +1,16 @@
 package br.com.cast.model;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -22,13 +25,13 @@ public class Contato implements Serializable {
 	@Column(name = "id")
 	private Integer id;
 
-	/*@OneToMany
-	@JoinColumn(name = "idPerson")
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "id_contato")
 	protected List<Telefone> telefones;
 	
-	@OneToMany
-	@JoinColumn(name = "idPerson")
-	protected List<Email> emails;*/
+	@OneToMany(cascade = CascadeType.ALL, targetEntity = Email.class)
+	@JoinColumn(name = "id_contato")
+	protected List<Email> emails;
 	
 	@OneToOne
 	@JoinColumn(name = "id_usuario")
@@ -106,7 +109,7 @@ public class Contato implements Serializable {
 		this.complemento = complemento;
 	}
 
-/*	public List<Telefone> getTelefones() {
+	public List<Telefone> getTelefones() {
 		return telefones;
 	}
 
@@ -120,5 +123,5 @@ public class Contato implements Serializable {
 
 	public void setEmails(List<Email> emails) {
 		this.emails = emails;
-	}*/
+	}
 }

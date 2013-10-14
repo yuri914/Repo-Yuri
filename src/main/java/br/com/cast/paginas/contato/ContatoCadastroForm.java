@@ -44,7 +44,8 @@ public abstract class ContatoCadastroForm extends Form<Contato> {
 	private DropDownChoice<Estado> estadoDropDown;
 	private DropDownChoice<Cidade> cidadeDropDown;
 	private DropDownChoice<Integer> ddd;
-	
+	private List<Email> listaEmails;
+	private List<Telefone> listaTelefones;
 	
 	public ContatoCadastroForm(String id) {
 		super(id);
@@ -67,7 +68,6 @@ public abstract class ContatoCadastroForm extends Form<Contato> {
 				EnderecoTO enderecoEncontrado = consultarCep(cep.getModelObject());
 				logradouro.setModel(Model.of(enderecoEncontrado.getLogradouro()));
 				bairro.setModel(Model.of(enderecoEncontrado.getBairro()));
-				
 				target.add(logradouro, bairro);
 			}
 		});
@@ -90,8 +90,8 @@ public abstract class ContatoCadastroForm extends Form<Contato> {
 		emailTxtField = new TextField<String>("email");
 		emailTxtField.setRequired(true);
 		emailTxtField.setModel(new PropertyModel<String>(getEmail(), "email"));
-		//getEmail().setContato(getContato());
 		getEmail().setPrimario(true);
+		listaEmails.add(getEmail());
 		add(emailTxtField);
 		
 		estadoDropDown = new DropDownChoice<Estado>("estado");
@@ -139,9 +139,9 @@ public abstract class ContatoCadastroForm extends Form<Contato> {
 		telefoneTxtField = new TextField<Integer>("numero");
 		telefoneTxtField.setRequired(true);
 		telefoneTxtField.setModel(new PropertyModel<Integer>(getTelefone(), "numero"));
-		//getTelefone().setContato(getContato());
 		getTelefone().setDdi(55);
 		getTelefone().setPrimario(true);
+		listaTelefones.add(getTelefone());
 		add(telefoneTxtField);
 		
 		btNovoNumero = new AjaxButton("novoNumero") {
@@ -161,9 +161,9 @@ public abstract class ContatoCadastroForm extends Form<Contato> {
 			protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
 				getContato().setLogradouro(logradouro.getModelObject());
 				getContato().setBairro(bairro.getModelObject());
+				getContato().setEmails(listaEmails);
+				getContato().setTelefones(listaTelefones);
 				salvarContato(getContato());
-				salvarTelefone(getTelefone());
-				salvarEmail(getEmail());
 				setResponsePage(UsuarioPesquisaPage.class);
 			}
 			@Override

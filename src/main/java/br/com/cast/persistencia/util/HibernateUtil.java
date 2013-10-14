@@ -6,7 +6,6 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.persistence.Query;
 
 public class HibernateUtil<T> implements Serializable {
 
@@ -31,6 +30,7 @@ public class HibernateUtil<T> implements Serializable {
 		return isSucessoSalvar;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public static <T> List<T> buscarTodos(String tipo){
 		return entityManager.createQuery("from " + tipo).getResultList();
 	}
@@ -40,7 +40,7 @@ public class HibernateUtil<T> implements Serializable {
 	      if (persistentClass == null)
 	      {
 	         throw new RuntimeException(
-	            "É necessário invocar o método setPersistentClass(Class<T> clazz)");
+	            "ï¿½ necessï¿½rio invocar o mï¿½todo setPersistentClass(Class<T> clazz)");
 	      }
 	      return persistentClass;
 	   }

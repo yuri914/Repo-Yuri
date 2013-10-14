@@ -27,7 +27,7 @@ public class DaoUsuarioImpl extends JPAGenericoDao<Usuario> implements IDaoUsuar
 	@SuppressWarnings("unchecked")
 	public List<Usuario> autenticarUsuarioSistema(Usuario usuarioLogin) {
 		String jpql = " From Usuario u where u.login = ? and u.senha = ?";
-		return (List<Usuario>) super.criarQuery(jpql, usuarioLogin.getLogin(), usuarioLogin.getSenha());
+		return (List<Usuario>) super.buscarPorJpql(jpql, usuarioLogin.getLogin(), usuarioLogin.getSenha());
 	}
 
 	/**

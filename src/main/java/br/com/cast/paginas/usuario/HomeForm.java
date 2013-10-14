@@ -2,6 +2,7 @@ package br.com.cast.paginas.usuario;
 
 import java.util.Arrays;
 import java.util.Date;
+
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.datetime.StyleDateConverter;
@@ -13,7 +14,6 @@ import org.apache.wicket.markup.html.form.PasswordTextField;
 import org.apache.wicket.markup.html.form.RadioChoice;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
-import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
 
 import br.com.cast.model.Usuario;

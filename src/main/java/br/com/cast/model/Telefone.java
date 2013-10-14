@@ -21,9 +21,9 @@ public class Telefone implements Serializable {
 	@Column(name="id")
 	private Integer id;
 	
-	@ManyToOne
+	/*@ManyToOne
 	@JoinColumn(name="id_contato")
-	private Contato contato;
+	private Contato contato;*/
 	
 	@Column(name="ddi")
 	private Integer ddi;

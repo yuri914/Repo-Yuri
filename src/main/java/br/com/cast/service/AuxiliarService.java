@@ -4,17 +4,13 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.Serializable;
 import java.net.URL;
-
 import javax.xml.ws.WebServiceException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import br.com.cast.model.Cidade;
 import br.com.cast.model.Usuario;
 import br.com.cast.to.DistanciaTO;
 import br.com.cast.to.EnderecoTO;
-
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
