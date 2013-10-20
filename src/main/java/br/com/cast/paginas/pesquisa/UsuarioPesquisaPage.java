@@ -79,8 +79,8 @@ public class UsuarioPesquisaPage extends WebPage {
 			}
 
 			@Override
-			protected List<Usuario> buscarListaUsuarios() {
-				return serviceUsuario.buscarListaUsuarioBanco();
+			protected List<Usuario> buscarListaUsuarios(Usuario usuarioLogado) {
+				return serviceUsuario.buscarListaUsuarioBanco(usuarioLogado);
 			}
 
 			@Override

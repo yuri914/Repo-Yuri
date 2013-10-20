@@ -26,8 +26,8 @@ public abstract class HomeForm extends Form<Usuario> {
 	private static final long serialVersionUID = 1434251727526599430L;
 	
 	private FeedbackPanel feedback;
-	private TextField<String> login;
-	private PasswordTextField senha;
+	private TextField<String> loginTxtField;
+	private PasswordTextField senhaTxtField;
 	private AjaxButton btEntrar;
 	private TextField<String> nome;
 	private RadioChoice<EnumGenero> genero;
@@ -37,7 +37,7 @@ public abstract class HomeForm extends Form<Usuario> {
 	private TextField<String> senhaCadastro;
 	private AjaxButton btCadastrar;
 	Usuario usuarioLogin;
-	Usuario usuario;
+	Usuario usuarioCadastro;
 
 	public HomeForm(String id) {
 		super(id);
@@ -46,28 +46,21 @@ public abstract class HomeForm extends Form<Usuario> {
 		feedback.setOutputMarkupId(true);
 		add(feedback);
 		
-		login = new TextField<String>("login");
-		login.setModel(new PropertyModel<String>(getUsuarioLogin(), "login"));
-		add(login);
+		loginTxtField = new TextField<String>("login");
+		loginTxtField.setModel(new PropertyModel<String>(getUsuarioLogin(), "login"));
+		add(loginTxtField);
 		
-		senha = new PasswordTextField("senha");
-		senha.setModel(new PropertyModel<String>(getUsuarioLogin(), "senha"));
-		senha.setRequired(false);
-		add(senha);
+		senhaTxtField = new PasswordTextField("senha");
+		senhaTxtField.setModel(new PropertyModel<String>(getUsuarioLogin(), "senha"));
+		senhaTxtField.setRequired(false);
+		add(senhaTxtField);
 		
 		btEntrar = new AjaxButton("entrar") {
 
 			private static final long serialVersionUID = -7629953510484947562L;
 			
 			@Override
-			protected void onConfigure() {
-				
-			}
-			
-			@Override
 			protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
-				getUsuarioLogin().setLogin(login.getModelObject());
-				getUsuarioLogin().setSenha(senha.getModelObject());
 				Usuario usuarioEncontrado = autenticarUsuario(getUsuarioLogin());
 				if(usuarioEncontrado != null){
 					getSession().setAttribute("usuarioSessao", usuarioEncontrado);
@@ -86,20 +79,18 @@ public abstract class HomeForm extends Form<Usuario> {
 		add(btEntrar);
 		
 		nome = new TextField<String>("nome");
-		nome.setModel(new PropertyModel<String>(getUsuario(), "nome"));
-		//nome.setRequired(true);
+		nome.setModel(new PropertyModel<String>(getUsuarioCadastro(), "nome"));
 		add(nome);
 		
 		genero = new RadioChoice<EnumGenero>("genero");
 		genero.setChoices(Arrays.asList(EnumGenero.values()));
 		genero.setChoiceRenderer(new ChoiceRenderer<EnumGenero>("descricao"));
-		genero.setModel(new PropertyModel<EnumGenero>(getUsuario(), "genero"));
+		genero.setModel(new PropertyModel<EnumGenero>(getUsuarioCadastro(), "genero"));
 		genero.setSuffix("");
-		//genero.setRequired(true);
 		add(genero);
 		
 		nascimento = new DateTextField("dataNascimento", 
-		new PropertyModel<Date>(getUsuario(), "dataNascimento"), new StyleDateConverter("S-", true));
+		new PropertyModel<Date>(getUsuarioCadastro(), "dataNascimento"), new StyleDateConverter("S-", true));
 		DatePicker datePicker = new DatePicker();
 		datePicker.setShowOnFieldClick(true);
 		datePicker.setAutoHide(true);
@@ -107,18 +98,15 @@ public abstract class HomeForm extends Form<Usuario> {
 		add(nascimento);
 		
 		cpf = new TextField<Long>("cpf");
-		//cpf.setRequired(true);
-		cpf.setModel(new PropertyModel<Long>(getUsuario(), "cpf"));
+		cpf.setModel(new PropertyModel<Long>(getUsuarioCadastro(), "cpf"));
 		add(cpf);
 		
 		loginCadastro = new TextField<String>("loginCadastro");
-		//loginCadastro.setRequired(true);
-		loginCadastro.setModel(new PropertyModel<String>(getUsuario(), "login"));
+		loginCadastro.setModel(new PropertyModel<String>(getUsuarioCadastro(), "login"));
 		add(loginCadastro);
 		
 		senhaCadastro = new TextField<String>("senhaCadastro");
-		//senhaCadastro.setRequired(true);
-		senhaCadastro.setModel(new PropertyModel<String>(getUsuario(), "senha"));
+		senhaCadastro.setModel(new PropertyModel<String>(getUsuarioCadastro(), "senha"));
 		add(senhaCadastro);
 		
 		btCadastrar = new AjaxButton("cadastrar") {
@@ -127,8 +115,8 @@ public abstract class HomeForm extends Form<Usuario> {
 			
 			@Override
 			protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
-				salvarUsuario(getUsuario());
-				getSession().setAttribute("usuarioSessao", getUsuario());
+				salvarUsuario(getUsuarioCadastro());
+				getSession().setAttribute("usuarioSessao", getUsuarioCadastro());
 				setResponsePage(ContatoCadastroPage.class);
 			}
 			
@@ -151,11 +139,11 @@ public abstract class HomeForm extends Form<Usuario> {
 		return usuarioLogin;
 	}
 
-	public Usuario getUsuario() {
-		if (usuario == null) {
-			usuario = new Usuario();
+	public Usuario getUsuarioCadastro() {
+		if (usuarioCadastro == null) {
+			usuarioCadastro = new Usuario();
 		}
-		return usuario;
+		return usuarioCadastro;
 	}
 
 }

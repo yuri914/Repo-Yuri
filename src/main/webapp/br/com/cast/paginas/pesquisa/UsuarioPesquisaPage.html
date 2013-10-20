@@ -5,26 +5,32 @@
 		<title>Distancia Certa</title>
 	</head>
 	<body>
-		<h2>Consultar Usuários</h2>
-		<a class="btn btn-link" wicket:id="linkSair">Sair</a>
+		<h2 align="center">Consultar Usuários</h2>
+		<div class="navbar">
+		  <div class="navbar-inner">
+		    <ul class="nav">
+		      <li><a wicket:id="linkSair">Sair</a></li>
+		    </ul>
+		  </div>
+		</div>
 		<form class="form-inline" wicket:id="formularioPesquisa">
 		<fieldset>
 		<legend>Filtro</legend>
-		<label wicket:for="nome">Nome:</label>
-		<input type="text" wicket:id="nome"/><br/>
-		<label wicket:for="estado">Estado:</label>
-		<select wicket:id="estado"/>
+			<label wicket:for="nome">Nome:</label>
+			<input type="text" wicket:id="nome"/>
+			<label wicket:for="estado">Estado:</label>
+			<select wicket:id="estado"/>
 		<div wicket:id="containerCidade">
 			<label wicket:for="cidade">Cidade:</label>
 			<select wicket:id="cidade"/>
 		</div>
-		<label wicket:for="opcoesAvc">Opções Avançadas</label>
-		<input type="checkbox" wicket:id="opcoesAvc" />
+		<label wicket:for="opcoesAvc">Opções Avançadas: </label>
+				<input type="checkbox" wicket:id="opcoesAvc" />
 		<div wicket:id="containerDistanciaMax">
-			<label wicket:for="distanciaMaxima">Distância Máxima</label>
+			<label wicket:for="distanciaMaxima">Distância Máxima: </label>
 			<input wicket:id="distanciaMaxima" type="text"/>
 		</div>
-		<input type="submit" wicket:id="filtrar" value="Filtrar"/>
+			<input class="btn" type="submit" wicket:id="filtrar" value="Filtrar"/>
 		</fieldset>
 		<div wicket:id="gridPesquisaUsuario"></div>
 		</form>

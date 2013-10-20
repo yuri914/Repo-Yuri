@@ -1,6 +1,7 @@
 package br.com.cast.service;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,10 +23,22 @@ public class UsuarioService implements Serializable {
 		daoUsuario.salvar(usuario);
 	}
 	
-	public List<Usuario> buscarListaUsuarioBanco(){
-		return daoUsuario.buscarTodos();
+	public List<Usuario> buscarListaUsuarioBanco(Usuario usuarioLogado){
+		return daoUsuario.buscarTodosGrid(usuarioLogado);
 	}
 	
+	/**
+	 * 
+	 * Este método tem a função de chamar a camada DAO e buscar o usuario informado na base de dados,
+	 * se houver o usuario, trará o usuario até a camada de visão, para ser anexado a sessão como usuario
+	 * logado caso seja autenticado.
+	 * 
+	 * @param usuarioLogin Usuario para autenticação 
+	 *
+	 * @author Yuri Cavalcante
+	 * @return Usuario autenticado ou não
+	 *
+	 */
 	public Usuario autenticarUsuarioBanco(Usuario usuarioLogin) {
 		Usuario usuarioEncontrado = null;
 		List<Usuario> listaUsuario = daoUsuario.autenticarUsuarioSistema(usuarioLogin);
@@ -35,9 +48,14 @@ public class UsuarioService implements Serializable {
 		return usuarioEncontrado;
 	}
 
+	@SuppressWarnings("unused")
 	public List<Usuario> recuperarListaUsuarioFiltrado(String nomePesquisa,
 			Cidade cidadePesquisa, Estado estadoPesquisa, Double distMaxima) {
-		return daoUsuario.recuperarListaUsuarioFiltroBanco(
+		
+		List<Usuario> listaUsuariosFiltrados = new ArrayList<Usuario>();
+		listaUsuariosFiltrados = daoUsuario.recuperarListaUsuarioFiltroBanco(
 		nomePesquisa, cidadePesquisa, estadoPesquisa, distMaxima);
+		
+		return null;
 	}
 }

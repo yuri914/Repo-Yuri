@@ -9,6 +9,7 @@ import br.com.cast.persistencia.generico.GenericoDao;
 
 public interface IDaoUsuario extends GenericoDao<Usuario> {
 
+	public List<Usuario> buscarTodosGrid(Usuario usuario);
 	public List<Usuario> autenticarUsuarioSistema(Usuario usuarioLogin);
 	public List<Usuario> recuperarListaUsuarioFiltroBanco(String nomePesquisa,
 	Cidade cidadePesquisa, Estado estadoPesquisa, Double distMaxima);

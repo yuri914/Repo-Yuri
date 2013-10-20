@@ -28,7 +28,7 @@ public abstract class UsuarioPesquisaGrid extends Panel {
 
 	public void getGridUsuario(List<Usuario> listaUsuarios){
 		DataView<Usuario> repetidor = new DataView<Usuario>("usuarios",
-				new ListDataProvider<Usuario>(listaUsuarios), 3) {
+				new ListDataProvider<Usuario>(listaUsuarios), 5) {
 
 					private static final long serialVersionUID = -6536490772368790638L;
 

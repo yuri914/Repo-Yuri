@@ -81,11 +81,11 @@ public abstract class UsuarioPesquisaForm extends Form<Usuario> {
 
 			@Override
 			protected void onUpdate(AjaxRequestTarget target) {
-				if(containerOpcoesAvancadas.isVisible()){
+				if(containerOpcoesAvancadas.isVisible())
 					containerOpcoesAvancadas.setVisible(false);
-				}else {
+				else 
 					containerOpcoesAvancadas.setVisible(true);
-				}
+				
 				target.add(containerOpcoesAvancadas);
 			}
 		});
@@ -113,7 +113,7 @@ public abstract class UsuarioPesquisaForm extends Form<Usuario> {
 				return calcularDistanciaUsuario(usuarioGrid, getUsuarioSessao());
 			}
 		};
-		panelUsuarios.getGridUsuario(buscarListaUsuarios());
+		panelUsuarios.getGridUsuario(buscarListaUsuarios(getUsuarioSessao()));
 		panelUsuarios.setOutputMarkupId(true);
 		//panelUsuarios.setVisible(false);
 		add(panelUsuarios);
@@ -148,7 +148,7 @@ public abstract class UsuarioPesquisaForm extends Form<Usuario> {
 
 	protected abstract List<Usuario> buscarUsuarioFiltro(String nomePesquisa,
 	Cidade cidadePesquisa, Estado estadoPesquisa, Double distMaxima);
-	protected abstract List<Usuario> buscarListaUsuarios();
+	protected abstract List<Usuario> buscarListaUsuarios(Usuario usuarioLogado);
 	protected abstract DistanciaTO calcularDistanciaUsuario(Usuario usuarioGrid, Usuario usuarioSessao);
 	protected abstract Cidade recuperarCidadeUsuario(Usuario usuario);
 	protected abstract List<Cidade> buscarListaCidades(Estado estado);

@@ -189,6 +189,11 @@ textarea {
   }
 }
 
+.centralizar {
+    margin: 0 auto;
+    float: none;
+}
+
 .clearfix {
   *zoom: 1;
 }

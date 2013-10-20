@@ -44,8 +44,8 @@ public abstract class ContatoCadastroForm extends Form<Contato> {
 	private DropDownChoice<Estado> estadoDropDown;
 	private DropDownChoice<Cidade> cidadeDropDown;
 	private DropDownChoice<Integer> ddd;
-	private List<Email> listaEmails;
-	private List<Telefone> listaTelefones;
+	private List<Email> listaEmails = new ArrayList<Email>();
+	private List<Telefone> listaTelefones = new ArrayList<Telefone>();
 	
 	public ContatoCadastroForm(String id) {
 		super(id);
@@ -66,9 +66,13 @@ public abstract class ContatoCadastroForm extends Form<Contato> {
 			@Override
 			protected void onUpdate(AjaxRequestTarget target) {
 				EnderecoTO enderecoEncontrado = consultarCep(cep.getModelObject());
-				logradouro.setModel(Model.of(enderecoEncontrado.getLogradouro()));
-				bairro.setModel(Model.of(enderecoEncontrado.getBairro()));
-				target.add(logradouro, bairro);
+				if(enderecoEncontrado != null){
+					logradouro.setModel(Model.of(enderecoEncontrado.getLogradouro()));
+					bairro.setModel(Model.of(enderecoEncontrado.getBairro()));
+				}else {
+					error("Cep não encontrado.");
+				}
+				target.add(logradouro, bairro, feedback);
 			}
 		});
 		add(cep);
