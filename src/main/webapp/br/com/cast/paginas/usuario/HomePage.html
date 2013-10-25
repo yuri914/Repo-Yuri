@@ -1,38 +1,76 @@
 <!DOCTYPE html>
 <html xmlns:wicket="http://wicket.apache.org">
-	<head>
-		<meta charset="utf-8" />
-		<title>Distancia Certa</title>
-	</head>
-	<body>
+<head>
+<meta charset="utf-8" />
+<title>Distancia Certa</title>
+<link href="bootstrap.css" rel="stylesheet">
+	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="js/JSDistanciaCerta.js"></script>
+	<script type="text/javascript" src="js/plugins/jquery.maskedinput.min.js"></script>
+
+</head>
+<body>
 	<form class="form-inline" wicket:id="formularioPrincipal">
 		<div wicket:id="mensagem"></div>
 		<div align="right">
-		<label wicket:for="login">Login:</label>
-		<input type="text" wicket:id="login"/>
-		<label wicket:for="senha">Senha:</label>
-		<input type="password" wicket:id="senha"/>
-		<input class="btn btn-success" type="submit" wicket:id="entrar" value="Entrar"/>
+
+			<label wicket:for="login">Login:</label> <input type="text"
+				wicket:id="login" /> <label wicket:for="senha">Senha:</label> <input
+				type="password" wicket:id="senha" /> <input class="btn btn-success"
+				type="submit" wicket:id="entrar" value="Entrar" />
 		</div>
-		<hr/>
-	<fieldset>
-		<div align="center">
-		<legend>Cadastre-se</legend>
-		<label wicket:for="nome">Nome:</label>
-		<input wicket:id="nome" type="text"/><br/>
-		<label wicket:for="genero">Genero:</label>
-		<span wicket:id="genero"/><br/>
-		<label wicket:for="dataNascimento">Nascimento:</label>
-		<input maxlength="10" wicket:id="dataNascimento" type="text"/><br/>
-		<label wicket:for="cpf">CPF:</label>
-		<input maxlength="11" wicket:id="cpf" type="text"/><br/>
-		<label wicket:for="loginCadastro">Login:</label>
-		<input wicket:id="loginCadastro" type="text"/><br/>
-		<label wicket:for="senhaCadastro">Senha:</label>
-		<input wicket:id="senhaCadastro" type="text"/><br/>
-		<input class="btn btn-success" type="submit" wicket:id="cadastrar" value="Cadastrar"/>
-		</div>
-	</fieldset>
+		<hr />
+		<fieldset>
+
+			<div class="container-fluid form-horizontal">
+				<legend>Cadastre-se</legend>
+
+				<div class="control-group">
+					<label class="control-label" wicket:for="nome">Nome:</label>
+					<div class="controls">
+						<input wicket:id="nome" type="text" />
+					</div>
+				</div>
+
+				<div class="control-group">
+					<label class="control-label" wicket:for="genero">Genero:</label>
+					<div class="controls">
+						<span wicket:id="genero" />
+					</div>
+				</div>
+
+				<div class="control-group">
+					<label class="control-label" wicket:for="dataNascimento">Nascimento:</label>
+					<div class="controls">
+						<input id="inputNasc" maxlength="10" wicket:id="dataNascimento" type="text" />
+					</div>
+				</div>
+
+				<div class="control-group">
+					<label class="control-label" wicket:for="cpf">CPF:</label>
+					<div class="controls">
+						<input id="inputCpf" maxlength="11" wicket:id="cpf" type="text" />
+					</div>
+				</div>
+
+				<div class="control-group">
+					<label class="control-label" wicket:for="loginCadastro">Login:</label>
+					<div class="controls">
+						<input type="text" wicket:id="loginCadastro" />
+					</div>
+				</div>
+
+				<div class="control-group">
+					<label class="control-label" wicket:for="senhaCadastro">Senha:</label>
+					<div class="controls">
+						<input wicket:id="senhaCadastro" type="text" />
+					</div>
+				</div>
+
+				<input class="btn btn-success offset2" type="submit"
+					wicket:id="cadastrar" value="Cadastrar" />
+			</div>
+		</fieldset>
 	</form>
-	</body>
+</body>
 </html>

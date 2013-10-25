@@ -42,14 +42,6 @@ public class AuxiliarService implements Serializable {
 		}.getType());
 	}
 
-	/**
-	 * 
-	 * Este método tem a função de preparar o caminho, abrir a conexão com a
-	 * URL e retornar um JSON.
-	 * 
-	 * @author Yuri Cavalcante
-	 * @return JSON
-	 */
 	public String jsonBuilder(String caminho) {
 		try {
 			URL url = new URL(caminho);
