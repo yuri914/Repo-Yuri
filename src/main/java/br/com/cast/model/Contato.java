@@ -25,12 +25,12 @@ public class Contato implements Serializable {
 	@Column(name = "id")
 	private Integer id;
 
-	@OneToMany(cascade = CascadeType.ALL, targetEntity = Telefone.class)
 	@JoinColumn(name = "id_contato")
+	@OneToMany(cascade = CascadeType.ALL, targetEntity = Telefone.class)
 	protected List<Telefone> telefones;
 	
-	@OneToMany(cascade = CascadeType.ALL, targetEntity = Email.class)
 	@JoinColumn(name = "id_contato")
+	@OneToMany(cascade = CascadeType.ALL, targetEntity = Email.class)
 	protected List<Email> emails;
 	
 	@OneToOne

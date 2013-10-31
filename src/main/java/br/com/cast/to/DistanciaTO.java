@@ -26,8 +26,13 @@ public class DistanciaTO {
 	 * @return
 	 */
 	public String getDistanciaFormatada(){
-		Double valorDistancia = Double.valueOf(getDistancia());
-		String valorFormatado = String.format("%.0f", valorDistancia) + " Km";
+		String valorFormatado = null;
+		if(Double.valueOf(getDistancia()) != 0){
+			Double valorDistancia = Double.valueOf(getDistancia());
+			valorFormatado = String.format("%.0f", valorDistancia) + " Km";
+		} else {
+			valorFormatado = "O Usuario está na sua cidade";
+		}
 		return valorFormatado;
 	}
 	

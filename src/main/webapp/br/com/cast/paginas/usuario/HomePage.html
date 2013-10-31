@@ -4,15 +4,15 @@
 <meta charset="utf-8" />
 <title>Distancia Certa</title>
 <link href="bootstrap.css" rel="stylesheet">
-	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+	<!-- <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
 	<script type="text/javascript" src="js/JSDistanciaCerta.js"></script>
-	<script type="text/javascript" src="js/plugins/jquery.maskedinput.min.js"></script>
+	<script type="text/javascript" src="js/plugins/jquery.maskedinput.min.js"></script> -->
 
 </head>
-<body>
+<body background="imagens/bg-intuits.png">
 	<form class="form-inline" wicket:id="formularioPrincipal">
 		<div wicket:id="mensagem"></div>
-		<div align="right">
+		<div id="divLoginSystem" align="right">
 
 			<label wicket:for="login">Login:</label> <input type="text"
 				wicket:id="login" /> <label wicket:for="senha">Senha:</label> <input
@@ -22,8 +22,8 @@
 		<hr />
 		<fieldset>
 
-			<div class="container-fluid form-horizontal">
-				<legend>Cadastre-se</legend>
+			<legend id="leg">Cadastre-se</legend>
+			<div id="divFormRegister" class="container-fluid form-horizontal">
 
 				<div class="control-group">
 					<label class="control-label" wicket:for="nome">Nome:</label>
